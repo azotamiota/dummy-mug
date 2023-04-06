@@ -1,10 +1,11 @@
 import React from 'react';
+import server from '../../server';
 
 function Mugs() {
   const [mugs, setMugs] = React.useState([]);
 
   React.useEffect(() => {
-    fetch('http://localhost:3000/mugs')
+    fetch(server)
       .then((res) => res.json())
       .then((data) => setMugs(data));
   }, []);
