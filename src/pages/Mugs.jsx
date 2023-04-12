@@ -1,13 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 import server from '../../server';
 
 function Mugs() {
   const [mugs, setMugs] = React.useState([]);
 
   React.useEffect(() => {
-    fetch(server + '/mugs')
-      .then((res) => res.json())
-      .then((data) => setMugs(data));
+    axios.get(server + '/mugs')
+      .then((res) => setMugs(res.data))
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   return (
