@@ -5,7 +5,7 @@ function Mugs() {
   const [mugs, setMugs] = React.useState([]);
 
   React.useEffect(() => {
-    fetch(server)
+    fetch(server + '/mugs')
       .then((res) => res.json())
       .then((data) => setMugs(data));
   }, []);
