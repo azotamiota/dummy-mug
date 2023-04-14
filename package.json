@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx vite --host",
+    "start": "npx vite --host",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
