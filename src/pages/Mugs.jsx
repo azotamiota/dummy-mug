@@ -9,7 +9,9 @@ function Mugs() {
     axios.get(server + '/mugs', {
       headers: {
         "Access-Control-Allow-Origin": "*",
-        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        'Content-Type': 'application/json; charset=utf-8',
+        'withCredentials': 'true'
       }
     })
       .then((res) => setMugs(res.data))
