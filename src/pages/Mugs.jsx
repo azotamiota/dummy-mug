@@ -6,7 +6,12 @@ function Mugs() {
   const [mugs, setMugs] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(server + '/mugs')
+    axios.get(server + '/mugs', {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+      }
+    })
       .then((res) => setMugs(res.data))
       .catch((error) => {
         console.log(error);
