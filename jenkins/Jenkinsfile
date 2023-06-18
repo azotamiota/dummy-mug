@@ -2,13 +2,15 @@ pipeline {
     agent any
     parameters {
         booleanParam(defaultValue: false, description: "terraform apply?", name: "TF_APPLY")
-        string(defaultValue: "TEST", description: "Which environment?", name: "deployEnv")
+        string(defaultValue: "ENV", description: "Which environment?", name: "deployEnv")
+        choice(choices: ["React, Flask, Django"], description: "Which framework?", name: "appFramework")
     }
     stages {
         stage("Clean ups") {
             steps {
-                echo "booleanParam is set to: ${params.TF_APPLY}"
+                echo "terraform apply?: ${params.TF_APPLY}"
                 echo "Environment is set to: ${params.deployEnv}"
+                echo "App framework: ${params.appFramework}"
                 deleteDir()
             }
         }
