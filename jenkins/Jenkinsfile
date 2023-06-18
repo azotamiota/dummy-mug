@@ -20,9 +20,7 @@ pipeline {
         }
         stage("Build") {
             steps {
-               
                     sh "echo 'Test text in a txt file' > test.txt"
-             
             }
         }
         stage("Test") {
@@ -37,6 +35,11 @@ pipeline {
                         }
                     }
               
+            }
+        }
+        stage("Complete") {
+            steps {
+                    sh "echo job done"
             }
         }
     }
