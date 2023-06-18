@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Clone repo') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: 'c71bcacf-6b48-4ba3-94a8-e8116a338e47', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     checkout([$class: 'GitSCM',
                               branches: [[name: '*/master']],
                               userRemoteConfigs: [[
                                   url: 'https://github.com/azotamiota/dummy-mug.git',
-                                  credentialsId: 'github-credentials'
+                                  credentialsId: 'c71bcacf-6b48-4ba3-94a8-e8116a338e47'
                               ]]])
                 }
             }
