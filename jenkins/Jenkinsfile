@@ -10,7 +10,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'c71bcacf-6b48-4ba3-94a8-e8116a338e47', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     checkout([$class: 'GitSCM',
-                              branches: [[name: '*/master']],
+                              branches: [[name: '*/main']],
                               userRemoteConfigs: [[
                                   url: 'https://github.com/azotamiota/dummy-mug.git',
                                   credentialsId: 'c71bcacf-6b48-4ba3-94a8-e8116a338e47'
