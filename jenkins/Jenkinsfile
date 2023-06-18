@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    stages {
+        stage("Clean ups") {
+            steps {
+                deleteDir()
+            }
+        }
+        stage('Clone repo') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    checkout([$class: 'GitSCM',
+                              branches: [[name: '*/master']],
+                              userRemoteConfigs: [[
+                                  url: 'https://github.com/azotamiota/dummy-mug.git',
+                                  credentialsId: 'github-credentials'
+                              ]]])
+                }
+            }
+        }
+        stage("Build") {
+            steps {
+                dir("prop_info")
+                sh "echo 'Test text in a txt file' > test.txt"
+            }
+        }
+        stage("Test") {
+            steps {
+                dir('prop_info')
+                script {
+                        if (fileExists('test.txt')) {
+                            echo "The file 'test.txt' exists."
+                            // Add your test steps here
+                        } else {
+                            error "The file 'test.txt' does not exist."
+                        }
+                    }
+            }
+        }
+    }
+}
