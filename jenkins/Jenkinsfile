@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        def myString = "Hello World"
+        def myNumber = 10
+        def myBool = true
+    }
     parameters {
         booleanParam(defaultValue: false, description: "terraform apply?", name: "TF_APPLY")
         string(defaultValue: "DEV", description: "Which environment?", name: "deployEnv")
@@ -8,6 +13,9 @@ pipeline {
     stages {
         stage("Clean ups") {
             steps {
+                echo "myString: ${myString}"
+                echo "myNumber: ${myNumber}"
+                echo "myBool: ${myBool}"
                 echo "terraform apply?: ${params.TF_APPLY}"
                 echo "Environment is set to: ${params.deployEnv}"
                 echo "App framework: ${params.appFramework}"
