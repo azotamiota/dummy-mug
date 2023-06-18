@@ -1,12 +1,14 @@
 pipeline {
     agent any
     parameters {
+        booleanParam(defaultValue: false, description: "terraform apply?", name: "TF_APPLY")
         string(defaultValue: "TEST", description: "Which environment?", name: "deployEnv")
     }
     stages {
         stage("Clean ups") {
             steps {
-                echo "booleanParam is set to: ${params.deployEnv}"
+                echo "booleanParam is set to: ${params.TF_APPLY}"
+                echo "Environment is set to: ${params.deployEnv}"
                 deleteDir()
             }
         }
