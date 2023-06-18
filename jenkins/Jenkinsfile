@@ -1,12 +1,12 @@
 pipeline {
     agent any
     parameters {
-        booleanParam(defaultValue: false, description: "Enable service", name: "myBoolean")
+        string(defaultValue: "TEST", description: "Which environment?", name: "deployEnv")
     }
     stages {
         stage("Clean ups") {
             steps {
-                echo "booleanParam is set to: ${params.myBoolean}"
+                echo "booleanParam is set to: ${params.deployEnv}"
                 deleteDir()
             }
         }
