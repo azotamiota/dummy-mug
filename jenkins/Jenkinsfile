@@ -20,8 +20,9 @@ pipeline {
         }
         stage("Build") {
             steps {
-                dir("dummy-mug")
-                sh "echo 'Test text in a txt file' > test.txt"
+                dir("dummy-mug") {
+                    sh "echo 'Test text in a txt file' > test.txt"
+                }
             }
         }
         stage("Test") {
