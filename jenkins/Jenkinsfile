@@ -29,7 +29,7 @@ pipeline {
             steps {
                 dir('dummy-mug') {
                 script {
-                        if (fileExists('tessst.txt')) {
+                        if (fileExists('test.txt')) {
                             echo "The file 'test.txt' exists."
                             // Add your test steps here
                         } else {
