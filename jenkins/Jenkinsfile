@@ -20,14 +20,14 @@ pipeline {
         }
         stage("Build") {
             steps {
-                dir("dummy-mug") {
+               
                     sh "echo 'Test text in a txt file' > test.txt"
-                }
+             
             }
         }
         stage("Test") {
             steps {
-                dir('dummy-mug') {
+                
                 script {
                         if (fileExists('test.txt')) {
                             echo "The file 'test.txt' exists."
@@ -36,7 +36,7 @@ pipeline {
                             error "The file 'test.txt' does not exist."
                         }
                     }
-                }
+              
             }
         }
     }
