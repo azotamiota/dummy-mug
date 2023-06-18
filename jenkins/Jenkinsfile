@@ -20,13 +20,13 @@ pipeline {
         }
         stage("Build") {
             steps {
-                dir("prop_info")
+                dir("dummy-mug")
                 sh "echo 'Test text in a txt file' > test.txt"
             }
         }
         stage("Test") {
             steps {
-                dir('prop_info')
+                dir('dummy-mug')
                 script {
                         if (fileExists('test.txt')) {
                             echo "The file 'test.txt' exists."
