@@ -27,7 +27,7 @@ pipeline {
         }
         stage("Test") {
             steps {
-                dir('dummy-mug')
+                dir('dummy-mug') {
                 script {
                         if (fileExists('test.txt')) {
                             echo "The file 'test.txt' exists."
@@ -36,6 +36,7 @@ pipeline {
                             error "The file 'test.txt' does not exist."
                         }
                     }
+                }
             }
         }
     }
