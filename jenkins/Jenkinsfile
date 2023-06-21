@@ -20,6 +20,7 @@ pipeline {
                 echo "terraform apply?: ${params.TF_APPLY}"
                 echo "Environment is set to: ${params.deployEnv}"
                 echo "App framework: ${params.appFramework}"
+                echo "Build number is: ${env.BUILD_NUMBER}"
                 deleteDir()
             }
         }
