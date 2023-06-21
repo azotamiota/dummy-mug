@@ -39,6 +39,7 @@ pipeline {
         stage("Build") {
             steps {
                     sh "echo 'Test text in a txt file' > test.txt"
+                    sleep(10)
             }
         }
         stage("Test") {
