@@ -39,7 +39,15 @@ pipeline {
         stage("Build") {
             steps {
                     sh "echo 'Test text in a txt file' > test.txt"
-                    sleep(10)
+                script {
+                    if(params.myBool == false) {
+                        echo "myBool is FALSE"
+                        currentBuild.result = "SUCCESS"
+                        return
+                    } else {
+                        echo "myBool is TRUE"
+                    }
+                }
             }
         }
         stage("Test") {
