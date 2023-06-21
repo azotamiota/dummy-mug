@@ -40,7 +40,7 @@ pipeline {
             steps {
                     sh "echo 'Test text in a txt file' > test.txt"
                 script {
-                    if(params.myBool == false) {
+                    if(params.myBool === false) {
                         echo "myBool is FALSE"
                         currentBuild.result = "SUCCESS"
                         return
