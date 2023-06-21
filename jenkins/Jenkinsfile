@@ -3,7 +3,7 @@ pipeline {
     environment {
         def myString = "Hello World"
         def myNumber = 10
-        def myBool = true
+        def myBool = false
     }
     parameters {
         booleanParam(defaultValue: false, description: "terraform apply?", name: "TF_APPLY")
