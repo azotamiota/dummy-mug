@@ -40,12 +40,12 @@ pipeline {
             steps {
                     sh "echo 'Test text in a txt file' > test.txt"
                 script {
-                    if(myBool == false) {
-                        echo "myBool is FALSE"
+                    if(params.TF_APPLY == false) {
+                        echo "TF_APPLY is FALSE"
                         currentBuild.result = "SUCCESS"
                         return
                     } else {
-                        echo "myBool is TRUE"
+                        echo "TF_APPLY is TRUE"
                     }
                 }
             }
